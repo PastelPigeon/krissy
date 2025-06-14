@@ -2,6 +2,9 @@ import { usePage } from "../../hooks/usePage"
 
 const sideImages: string[] = [
   "../../assets/side-images/page0.gif",
+  "../../assets/side-images/page0.gif",
+  "../../assets/side-images/page0.gif",
+  "../../assets/side-images/page0.gif",
   "../../assets/side-images/page0.gif"
 ]
 
