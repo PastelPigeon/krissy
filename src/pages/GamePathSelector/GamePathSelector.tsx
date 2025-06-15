@@ -13,27 +13,29 @@ export default function GamePathSelector(){
   useEffect(() => {
     updateNextFunc(() => {
       updatePath(path)
-
-      useEffect(() => {
-        if (localGameInfo.isInvalidPath == false){
-          if (localGameInfo.hasInstalled == false){
-            navToPage(3)
-          } else {
-            navToPage(4)
-          }
-        } else {
-          navToPage(5)
-        }
-      }, [isLoading])
     })
-  }, [])
+  }, [path])
+
+  useEffect(() => {
+    if (isLoading == false){
+      if (localGameInfo.isInvalidPath == false){
+        if (localGameInfo.hasInstalled == false){
+          navToPage(2)
+        } else {
+          navToPage(3)
+        }
+      } else {
+        navToPage(4)
+      }
+    }
+  }, [isLoading])
 
   return(
     <div className="game-path-selector">
       <PageHeader title="设置游戏路径" description="将游戏路径填入下方输入框中，该路径必须包含DELTARUNE.EXE，您可以在资源管理器中手动查找，或使用STEAM进行查找"/>
       <div className="option">
         <label className="name">游戏路径</label>
-        <input className="input" onChange={(e) => {setPath(e.currentTarget.value)}}/>
+        <input className="input" onInput={(e) => {setPath(e.currentTarget.value)}}/>
       </div>
     </div>
   )

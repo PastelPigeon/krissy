@@ -9,7 +9,13 @@
     "core:window:default",
     "core:window:allow-start-dragging",
     "core:window:allow-close",
-    "fs:allow-exists",
-    "fs:allow-read-text-file"
+    {
+      "identifier": "fs:allow-exists",
+      "allow": [{"path": "**"}]
+    },
+    {
+      "identifier": "fs:allow-read-text-file",
+      "allow": [{"path": "**"}]
+    }
   ]
 }

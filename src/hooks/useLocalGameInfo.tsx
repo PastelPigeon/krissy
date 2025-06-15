@@ -41,7 +41,7 @@ function LocalGameInfoProvider(props: {children: ReactNode}){
     }
   })
 
-  const updateLocalGameInfo = async () => {
+  const updateLocalGameInfo = async (path: string) => {
     if (await exists(await join(path, "DELTARUNE.exe"))){
       if (await exists(await join(path, ".krissy.json"))){
         setLocalGameInfo(
@@ -94,7 +94,7 @@ function LocalGameInfoProvider(props: {children: ReactNode}){
     setIsLoading(true)
 
     setPath(path)
-    updateLocalGameInfo()
+    updateLocalGameInfo(path)
   }
 
   const contextValue = {
