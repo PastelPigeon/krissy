@@ -5,6 +5,7 @@ import SideImage from './components/SideImage/SideImage'
 import { Window } from './components/Window/Window'
 import { LocalGameInfoProvider } from './hooks/useLocalGameInfo'
 import { NextButtonProvider } from './hooks/useNextButton'
+import { OnlinePacksInfoProvider } from './hooks/useOnlinePacksInfo'
 import { PageProvider } from './hooks/usePage'
 import { TaskProvider } from './hooks/useTask'
 
@@ -15,13 +16,15 @@ function App() {
         <TaskProvider>
           <NextButtonProvider>
             <LocalGameInfoProvider>
-              <Window title='krissy - 引导式DELTARUNE汉化安装与管理程序'>
-                <div className='app-content'>
-                  <SideImage/>
-                  <PageContainer/>
-                  <BottomBar/>
-                </div>
-              </Window>
+              <OnlinePacksInfoProvider>
+                <Window title='krissy - 引导式DELTARUNE汉化安装与管理程序'>
+                  <div className='app-content'>
+                    <SideImage/>
+                    <PageContainer/>
+                    <BottomBar/>
+                  </div>
+                </Window>
+              </OnlinePacksInfoProvider>
             </LocalGameInfoProvider>
           </NextButtonProvider>
         </TaskProvider>

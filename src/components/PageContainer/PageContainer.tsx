@@ -5,13 +5,21 @@ import GamePathSelector from "../../pages/GamePathSelector/GamePathSelector"
 import NewInstallation from "../../pages/NewInstallation/NewInstallation"
 import ManagerOptions from "../../pages/ManagerOptions/ManagerOptions"
 import InvalidGamePath from "../../pages/InvalidGamePath/InvalidGamePath"
+import DownloadingPacksInfo from "../../pages/DowloadingPacksInfo/DownloadingPacksInfo"
+import README from "../../pages/README/README"
+import DownloadingPacksInfoError from "../../pages/DownloadingPacksInfoError/DownloadingPacksInfoError"
+import PacksSelector from "../../pages/PacksSelector/PacksSelector"
 
 const pages: ReactNode[] = [
   <Welcome/>,
   <GamePathSelector/>,
   <NewInstallation/>,
   <ManagerOptions/>,
-  <InvalidGamePath/>
+  <InvalidGamePath/>,
+  <DownloadingPacksInfo/>,
+  <README/>,
+  <DownloadingPacksInfoError/>,
+  <PacksSelector/>
 ]
 
 export default function PageContainer(){

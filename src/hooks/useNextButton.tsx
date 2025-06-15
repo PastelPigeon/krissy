@@ -2,7 +2,7 @@ import { createContext, useContext, useState, type ReactNode } from "react"
 
 type NextButtonContextType = {
   nextFunc: (() => void) | null,
-  updateNextFunc: (nextFunc: () => void) => void
+  updateNextFunc: (nextFunc: (() => void) | null) => void
 }
 
 const NextButtonContext = createContext<NextButtonContextType | null>(null)
@@ -11,7 +11,7 @@ function NextButtonProvider(props: {children: ReactNode}){
   const [nextFunc, setNextFunc] = useState<(() => void) | null>(null)
 
   //封装updateNextFunc
-  const updateNextFunc = (nextFunc: () => void) => {
+  const updateNextFunc = (nextFunc: (() => void) | null) => {
     setNextFunc(() => nextFunc)
   }
 

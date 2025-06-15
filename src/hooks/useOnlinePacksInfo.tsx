@@ -27,13 +27,14 @@ function OnlinePacksInfoProvider(props: {children: ReactNode}){
 
   const requestOnlinePacksInfo = async () => {
     setIsLoading(true)
-    setHasError(false)
 
     const response = await fetch(import.meta.env.VITE_ONLINE_PACKS_INFO_SOURCE)
 
     if (response.ok){
       setOnlinePacksInfo(await response.json())
+      setHasError(false)
     } else {
+      setOnlinePacksInfo(null)
       setHasError(true)
     }
 

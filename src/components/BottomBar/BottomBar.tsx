@@ -8,7 +8,8 @@ export default function BottomBar(){
   const randomText = useRandomText()
 
   const endPageIndexes: number[] = [
-    4
+    4,
+    7
   ]
 
   return(

@@ -141,7 +141,7 @@ body{
 .page-header{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .page-header .title{
@@ -174,4 +174,38 @@ body{
   font: 13px "8bitOperatorPlus", "fzb";
   color: black;
   outline: none;
+}
+
+.downloading-packs-info .loading{
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.readme{
+  width: 100%;
+}
+
+.readme .dialog{
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -60%);
+  height: 320px;
+  background: url(./assets/utils/dialog.gif);
+  font: 13px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+
+.readme .dialog .dialog-content{
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.readme .dialog .dialog-content::-webkit-scrollbar{
+  display: none;
 }
