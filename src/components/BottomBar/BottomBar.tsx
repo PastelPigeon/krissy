@@ -18,9 +18,12 @@ export default function BottomBar(){
       </div>
 
       <div className="right">
-        <button className="next-button" onClick={() => nextFunc != null && nextFunc()}>
-          {endPageIndexes.includes(pageIndex) ? "完成" : "下一步"}
-        </button>
+        {
+          nextFunc != null &&
+          <button className="next-button" onClick={() => nextFunc != null && nextFunc()}>
+            {endPageIndexes.includes(pageIndex) ? "完成" : "下一步"}
+          </button>
+        }
       </div>
     </div>
   )
