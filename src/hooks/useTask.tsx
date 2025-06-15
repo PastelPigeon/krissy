@@ -3,11 +3,9 @@ import { createContext, useContext, useState, type ReactNode } from "react"
 const Task =  {
   SetGamePath: 0,
   SetAction: 1,
-  SetSourceType: 2,
-  SetSource: 3,
-  SetPacks: 4,
-  SetIsEnabledBackup: 5,
-  SetNeedLuanchingDR: 6 
+  SetPacks: 2,
+  SetIsEnabledBackup: 3,
+  SetNeedLuanchingDR: 4
 }
 
 type TaskType = {

@@ -3,12 +3,14 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNextButton } from "../../hooks/useNextButton";
 import { usePage } from "../../hooks/usePage";
 import { useLocalGameInfo } from "../../hooks/useLocalGameInfo";
+import { Task, useTask } from "../../hooks/useTask";
 
 export default function GamePathSelector(){
   const [path, setPath] = useState("")
   const { updateNextFunc } = useNextButton()
   const { navToPage } = usePage()
   const { localGameInfo, updatePath, isLoading } = useLocalGameInfo()
+  const { addTask } = useTask()
 
   useEffect(() => {
     updateNextFunc(() => {
@@ -20,8 +22,10 @@ export default function GamePathSelector(){
     if (isLoading == false){
       if (localGameInfo.isInvalidPath == false){
         if (localGameInfo.hasInstalled == false){
+          addTask(Task.SetAction, {action: 0})
           navToPage(2)
         } else {
+          addTask(Task.SetAction, {action: 1})
           navToPage(3)
         }
       } else {
