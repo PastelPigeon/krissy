@@ -21,7 +21,7 @@ export default function README(){
     <div className="readme">
       <PageHeader title="翻译包使用说明" description="请阅读下面的翻译包使用说明，然后点击下一步，我们会为您继续安装"/>
       <div className="dialog">
-        <label className="dialog-content">{readme}</label>
+        <textarea className="dialog-content">{readme}</textarea>
       </div>
     </div>
   )

@@ -192,8 +192,6 @@ body{
   transform: translate(0%, -60%);
   height: 320px;
   background: url(./assets/utils/dialog.gif);
-  font: 13px "8bitOperatorPlus", "fzb";
-  color: white;
 }
 
 .readme .dialog .dialog-content{
@@ -204,8 +202,158 @@ body{
   height: calc(100% - 50px);
   overflow: hidden;
   overflow-y: scroll;
+  background: transparent;
+  outline: none;
+  border: none;
+  font: 13px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+.readme .dialog .dialog-content::-webkit-scrollbar{
+  display: none;
 }
 
-.readme .dialog .dialog-content::-webkit-scrollbar{
+.packs-selector{
+  position: relative;
+  width: 100%;
+}
+
+.packs-selector .packs{
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -70%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.packs-selector .packs .pack-wapper[data-selected=true] .pack .pack-content .left .pack-name{
+  color: yellow;
+}
+
+.packs-selector .packs .pack-wapper .pack .pack-content .left .pack-name{
+  transition: all 0.5s;
+}
+
+.packs-selector .packs .pack-wapper:hover .pack .pack-content .left .pack-name{
+  color: yellow;
+}
+
+.pack{
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+}
+
+.pack .background{
+  position: absolute;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  left: 10px;
+  top: 10px;
+  object-fit: cover;
+}
+
+.pack .pack-content{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url(./assets/utils/pack.gif);
+  opacity: 0.8;
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pack .pack-content .left{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pack .pack-content .left .pack-name{
+  font: 14px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+
+.pack .pack-content .left .chapter-id{
+  font: 12px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+
+.pack .pack-content .right{
+  margin-left: auto;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pack .pack-content .right .version{
+  font: 13px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+
+.enable-backup .option{
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -50%);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 7px;
+}
+
+.enable-backup .option .name{
+  font: 14px "8bitOperatorPlus", "fzb";
+  color: black;
+}
+
+.enable-backup .option .checkbox{
+  -webkit-appearance: none;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  border: #2c2c2c 3px solid;
+}
+
+.enable-backup .option .checkbox[data-checked=true]{
+  background: yellow;
+}
+
+.installing-progress{
+  position: relative;
+  width: 100%;
+}
+
+.installing-progress .loading{
+  position: absolute;
+  bottom: 20px;
+}
+
+.installing-progress .dialog{
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -70%);
+  height: 320px;
+  background: url(./assets/utils/dialog.gif);
+}
+
+.installing-progress .dialog .dialog-content{
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  overflow: hidden;
+  overflow-y: scroll;
+  background: transparent;
+  outline: none;
+  border: none;
+  font: 13px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+
+.installing-progress .dialog .dialog-content::-webkit-scrollbar{
   display: none;
 }

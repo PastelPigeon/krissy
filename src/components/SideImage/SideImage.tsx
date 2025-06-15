@@ -9,6 +9,8 @@ const sideImages: string[] = [
   "../../assets/side-images/page-normal.gif",
   "../../assets/side-images/page-normal.gif",
   "../../assets/side-images/page-normal.gif",
+  "../../assets/side-images/page-normal.gif",
+  "../../assets/side-images/page-normal.gif",
   "../../assets/side-images/page-normal.gif"
 ]
 

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNextButton } from "../../hooks/useNextButton";
 import { usePage } from "../../hooks/usePage";
-import { useOnlinePacksInfo } from "../../hooks/useOnlinePacksInfo";
 
 export default function NewInstallation(){
   const { updateNextFunc } = useNextButton()

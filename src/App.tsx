@@ -24,7 +24,7 @@ function App() {
                     <BottomBar/>
                   </div>
                 </Window>
-              </OnlinePacksInfoProvider>
+            </OnlinePacksInfoProvider>
             </LocalGameInfoProvider>
           </NextButtonProvider>
         </TaskProvider>

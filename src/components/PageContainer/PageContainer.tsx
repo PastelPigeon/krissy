@@ -9,6 +9,8 @@ import DownloadingPacksInfo from "../../pages/DowloadingPacksInfo/DownloadingPac
 import README from "../../pages/README/README"
 import DownloadingPacksInfoError from "../../pages/DownloadingPacksInfoError/DownloadingPacksInfoError"
 import PacksSelector from "../../pages/PacksSelector/PacksSelector"
+import EnableBackup from "../../pages/EnableBackup/EnableBackup"
+import InstallingProgress from "../../pages/InstallingProgress/InstallingProgress"
 
 const pages: ReactNode[] = [
   <Welcome/>,
@@ -19,7 +21,9 @@ const pages: ReactNode[] = [
   <DownloadingPacksInfo/>,
   <README/>,
   <DownloadingPacksInfoError/>,
-  <PacksSelector/>
+  <PacksSelector/>,
+  <EnableBackup/>,
+  <InstallingProgress/>
 ]
 
 export default function PageContainer(){

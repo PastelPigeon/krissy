@@ -8,7 +8,7 @@ type OnlinePacksInfoType = {
     version: number,
     background: string,
     downloadURL: string
-  }
+  }[]
 }
 
 type OnlinePacksInfoContextType = {

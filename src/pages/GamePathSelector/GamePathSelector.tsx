@@ -21,6 +21,7 @@ export default function GamePathSelector(){
   useEffect(() => {
     if (isLoading == false){
       if (localGameInfo.isInvalidPath == false){
+        addTask(Task.SetGamePath, {path: path})
         if (localGameInfo.hasInstalled == false){
           addTask(Task.SetAction, {action: 0})
           navToPage(2)
