@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNextButton } from "../../hooks/useNextButton";
 import { usePage } from "../../hooks/usePage";
-import { useTask, Task } from "../../hooks/useTask";
+import { InstallationInfoKey, useInstallationInfo } from "../../hooks/useInstallationInfo";
 
 export default function EnableBackup(){
   const [backupEnabled, setBackupEnabled] = useState(true)
 
   const { navToPage } = usePage()
   const { updateNextFunc } = useNextButton()
-  const { addTask } = useTask()
+  const { updateInstallationInfo } = useInstallationInfo()
 
   useEffect(() => {
     updateNextFunc(() => {
-      addTask(Task.SetIsEnabledBackup, {backupEnabled: backupEnabled})
+      updateInstallationInfo(InstallationInfoKey.backupEnabled, backupEnabled)
       navToPage(10)
     })
   }, [])

@@ -3,17 +3,17 @@ import BottomBar from './components/BottomBar/BottomBar'
 import PageContainer from './components/PageContainer/PageContainer'
 import SideImage from './components/SideImage/SideImage'
 import { Window } from './components/Window/Window'
+import { InstallationInfoProvider } from './hooks/useInstallationInfo'
 import { LocalGameInfoProvider } from './hooks/useLocalGameInfo'
 import { NextButtonProvider } from './hooks/useNextButton'
 import { OnlinePacksInfoProvider } from './hooks/useOnlinePacksInfo'
 import { PageProvider } from './hooks/usePage'
-import { TaskProvider } from './hooks/useTask'
 
 function App() {
   return (
     <div className='app'>
       <PageProvider>
-        <TaskProvider>
+        <InstallationInfoProvider>
           <NextButtonProvider>
             <LocalGameInfoProvider>
               <OnlinePacksInfoProvider>
@@ -27,7 +27,7 @@ function App() {
             </OnlinePacksInfoProvider>
             </LocalGameInfoProvider>
           </NextButtonProvider>
-        </TaskProvider>
+        </InstallationInfoProvider>
       </PageProvider>
     </div>
   )

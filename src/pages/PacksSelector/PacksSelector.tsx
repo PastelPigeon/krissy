@@ -4,7 +4,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import { useOnlinePacksInfo } from "../../hooks/useOnlinePacksInfo";
 import { useNextButton } from "../../hooks/useNextButton";
 import { usePage } from "../../hooks/usePage";
-import { Task, useTask } from "../../hooks/useTask";
+import { InstallationInfoKey, useInstallationInfo } from "../../hooks/useInstallationInfo";
 
 export default function PacksSelector(){
   const { onlinePacksInfo } = useOnlinePacksInfo()
@@ -12,11 +12,11 @@ export default function PacksSelector(){
 
   const { navToPage } = usePage()
   const { updateNextFunc } = useNextButton()
-  const { addTask } = useTask()
+  const { updateInstallationInfo } = useInstallationInfo()
 
   useEffect(() => {
     updateNextFunc(() => {
-      addTask(Task.SetPacks, {selectedPacks: selectedPacks})
+      updateInstallationInfo(InstallationInfoKey.selectedPacks, selectedPacks)
       navToPage(9)
     })
   }, [])
