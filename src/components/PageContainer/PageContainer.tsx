@@ -11,6 +11,7 @@ import DownloadingPacksInfoError from "../../pages/DownloadingPacksInfoError/Dow
 import PacksSelector from "../../pages/PacksSelector/PacksSelector"
 import EnableBackup from "../../pages/EnableBackup/EnableBackup"
 import InstallingProgress from "../../pages/InstallingProgress/InstallingProgress"
+import MirrorsSelector from "../../pages/MirrorsSelector/MirrorsSelector"
 
 const pages: ReactNode[] = [
   <Welcome/>,
@@ -23,6 +24,7 @@ const pages: ReactNode[] = [
   <DownloadingPacksInfoError/>,
   <PacksSelector/>,
   <EnableBackup/>,
+  <MirrorsSelector/>,
   <InstallingProgress/>
 ]
 

@@ -16,7 +16,7 @@ export default function EnableBackup(){
       updateInstallationInfo(InstallationInfoKey.backupEnabled, backupEnabled)
       navToPage(10)
     })
-  }, [])
+  }, [backupEnabled])
 
   return(
     <div className="enable-backup">

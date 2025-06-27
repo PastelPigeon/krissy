@@ -5,6 +5,7 @@ type InstallationInfoType = {
   action: "install" | "reinstall" | "uninstall",
   selectedPacks: number[],
   backupEnabled: boolean,
+  mirror: string
   needLaunchingGame: boolean
 }
 
@@ -13,6 +14,7 @@ const InstallationInfoKey = {
   action: "action",
   selectedPacks: "selectedPacks",
   backupEnabled: "backupEnabled",
+  mirror: "mirror",
   needLaunchingGame: "needLaunchingGame"
 }
 
@@ -30,6 +32,7 @@ function InstallationInfoProvider(props: {children: ReactNode}){
       action: "install",
       selectedPacks: [],
       backupEnabled: true,
+      mirror: "github.com",
       needLaunchingGame: false
     }
   )

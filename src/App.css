@@ -321,6 +321,46 @@ body{
   background: yellow;
 }
 
+.mirrors-selector .mirrors{
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -65%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mirrors-selector .mirrors .mirror{
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+  background: url(./assets/utils/pack.gif);
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.mirrors-selector .mirrors .mirror:hover .url{
+  color: yellow;
+}
+
+.mirrors-selector .mirrors .mirror[data-selected=true] .url{
+  color: yellow;
+}
+
+.mirrors-selector .mirrors .mirror .url{
+  font: 14px "8bitOperatorPlus", "fzb";
+  color: white;
+  transition: all 0.5s;
+}
+
+.mirrors-selector .mirrors .mirror .RTT{
+  font: 12px "8bitOperatorPlus", "fzb";
+  color: white;
+}
+
 .installing-progress{
   position: relative;
   width: 100%;
