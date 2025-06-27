@@ -1,14 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNextButton } from "../../hooks/useNextButton";
 import { useInstall } from "../../hooks/useInstall";
 
 export default function InstallingProgress(){
   const { updateNextFunc } = useNextButton()
-  const { install, logs, progress } = useInstall()
+  const { install, logs } = useInstall()
+  const hasExtcutedRef = useRef(false)
 
   useEffect(() => {
-    install()
+    if (!hasExtcutedRef.current){
+      install()
+      hasExtcutedRef.current = true
+    }
+
     updateNextFunc(null)
   }, [])
 
@@ -17,10 +22,8 @@ export default function InstallingProgress(){
       <PageHeader title="正在安装" description="正在安装翻译包到您的DELTARUNE中，您可以通过下面的日志框获取安装进度"/>
 
       <div className="dialog">
-        <textarea className="dialog-content" value={logs.join("\n")}/>
+        <textarea className="dialog-content" defaultValue={logs.join("\n")}/>
       </div>
-
-      <img className="loading" src={new URL("../../assets/utils/loading.gif", import.meta.url).href}/>
     </div>
   )
 }

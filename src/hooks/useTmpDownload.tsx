@@ -57,7 +57,7 @@ const useTmpDownload = () => {
     }));
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {method: "GET"});
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -81,7 +81,7 @@ const useTmpDownload = () => {
       return { path: tempPath, success: true };
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-      console.error(`Download failed for ${url}:`, errorMsg);
+      console.error(`Download failed for ${url}:`, error);
       
       setDownloads(prev => ({
         ...prev,

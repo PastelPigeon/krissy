@@ -36,11 +36,8 @@ export function useCommands(): UseCommands {
     for (let i = 0; i < commandsToRun.length; i++) {
       const commandStr = commandsToRun[i];
       try {
-        // 拆分命令和参数
-        const [program, ...args] = commandStr.split(/\s+/).filter(Boolean);
-        
         // 创建命令实例
-        const cmd = Command.create(program, args);
+        const cmd = Command.create("run-command", commandStr.split(" "));
         newProcesses.push(cmd);
         
         // 更新状态为运行中

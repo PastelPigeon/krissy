@@ -56,12 +56,25 @@ const useUnzip = (): UseUnzipResult => {
             await mkdir(uniqueDir, { recursive: true });
 
             // 执行解压命令
-            const command = Command.create(sevenZipPath, [
+            const command = Command.create("run-command", [
+              sevenZipPath,
               'x',
               `-o${uniqueDir}`,
               filePath,
-              '-y'
+              '-y',
+              '-bso0',
+              '-bse0'
             ]);
+
+            console.log([
+              sevenZipPath,
+              'x',
+              `-o${uniqueDir}`,
+              filePath,
+              '-y',
+              '-bso0',
+              '-bse0'
+            ].join(" "))
 
             const { code } = await command.execute();
             

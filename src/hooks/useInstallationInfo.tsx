@@ -35,9 +35,10 @@ function InstallationInfoProvider(props: {children: ReactNode}){
   )
 
   const updateInstallationInfo = (key: string, value: any) => {
-    let installationInfoTemp = JSON.parse(JSON.stringify(installationInfo))
-    installationInfoTemp[key] = value
-    setInstallationInfo(installationInfoTemp)
+    setInstallationInfo(prev => ({
+      ...prev,
+      [key]: value
+    }))
   }
 
   const contextValue = {

@@ -12,8 +12,8 @@ function useInstall(){
   const [logs, setLogs] = useState<string[]>([])
   const { installationInfo } = useInstallationInfo()
   const { onlinePacksInfo } = useOnlinePacksInfo()
-  const { downloadTmpFiles, downloads, cleanDownloads } = useTmpDownload()
-  const { unzip, zips, cleanZips } = useUnzip()
+  const { downloadTmpFiles, cleanDownloads } = useTmpDownload()
+  const { unzip, cleanZips } = useUnzip()
   const { runCommands, killCommands } = useCommands()
   const { createNewInfo } = useNewLocalGameInstallationInfo()
 
@@ -22,10 +22,10 @@ function useInstall(){
   }
 
   const updateLogs = (log: string) => {
-    setLogs([
-      ...logs,
+    setLogs(prev => ([
+      ...prev,
       log
-    ])
+    ]))
   }
 
   const install = async () => {
@@ -47,7 +47,7 @@ function useInstall(){
 
     updateLogs("创建下载任务")
 
-    await downloadTmpFiles(selectedPackUrls)
+    let downloads = await downloadTmpFiles(selectedPackUrls)
 
     updateLogs("已成功下载所有翻译包")
     updateProgress(3)
@@ -61,7 +61,7 @@ function useInstall(){
 
     updateLogs("正在解压翻译包")
 
-    await unzip(zipPaths)
+    let zips = await unzip(zipPaths)
 
     updateLogs("已成功解压所有翻译包")
     updateProgress(3)
@@ -69,8 +69,8 @@ function useInstall(){
     let unzippedZipPaths: string[] = []
 
     zips.forEach((zip) => {
-      unzippedZipPaths.push(zip.path)
-      updateLogs(`本地临时路径 ${zip.path}`)
+      unzippedZipPaths.push(zip.tempDir ?? "")
+      updateLogs(`本地临时路径 ${zip.tempDir ?? "解压出现错误"}`)
     })
 
     updateLogs("正在创建安装命令")

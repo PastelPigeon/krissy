@@ -19,7 +19,7 @@ export default function PacksSelector(){
       updateInstallationInfo(InstallationInfoKey.selectedPacks, selectedPacks)
       navToPage(9)
     })
-  }, [])
+  }, [selectedPacks])
 
   return(
     <div className="packs-selector">
@@ -31,9 +31,12 @@ export default function PacksSelector(){
             return(
               <div className="pack-wapper" data-selected={selectedPacks.includes(pack.chapterID)} onClick={() => {
                 if (selectedPacks.includes(pack.chapterID)){
-                  setSelectedPacks(selectedPacks.filter((selectedPack) => selectedPack != pack.chapterID))
+                  setSelectedPacks(prev => (prev.filter((selectedPack) => selectedPack != pack.chapterID)))
                 } else {
-                  setSelectedPacks([...selectedPacks, pack.chapterID])
+                  setSelectedPacks(prev => ([
+                    ...prev,
+                    pack.chapterID
+                  ]))
                 }
               }}>
                 <Pack chapterID={pack.chapterID} packName={pack.packName} version={pack.version} background={pack.background}/>

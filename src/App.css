@@ -334,7 +334,7 @@ body{
 .installing-progress .dialog{
   position: relative;
   top: 50%;
-  transform: translate(0%, -70%);
+  transform: translate(0%, -60%);
   height: 320px;
   background: url(./assets/utils/dialog.gif);
 }
