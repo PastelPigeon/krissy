@@ -1,18 +1,19 @@
 import { usePage } from "../../hooks/usePage"
 
 const sideImages: string[] = [
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif",
-  "../../assets/side-images/page-normal.gif"
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif"
 ]
 
 export default function SideImage(){

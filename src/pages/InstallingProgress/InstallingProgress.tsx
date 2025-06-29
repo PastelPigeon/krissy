@@ -20,9 +20,11 @@ export default function InstallingProgress(){
   }, [])
 
   useEffect(() => {
-    if (progress == 14){
+    if (progress == 12){
       navToPage(12)
     }
+
+    console.log(progress)
   }, [progress])
 
   return(

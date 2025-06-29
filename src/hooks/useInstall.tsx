@@ -18,7 +18,7 @@ function useInstall(){
   const { createNewInfo } = useNewLocalGameInstallationInfo()
 
   const updateProgress = (delta: number) => {
-    setProgress(progress + delta)
+    setProgress(prev => (prev + delta))
   }
 
   const updateLogs = (log: string) => {
