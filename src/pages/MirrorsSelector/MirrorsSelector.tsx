@@ -41,7 +41,7 @@ export default function MirrorsSelector(){
   useEffect(() => {
     const RTTS: number[] = urlRTTs.map((urlRTT) => {return Number(urlRTT.RTT.replace("ms", ""))}).filter((RTT) => {return RTT != 0})
     RTTS.sort()
-    if (urlRTTs.filter((urlRTT) => {return Number(urlRTT.RTT.replace("ms", "")) == RTTS[0]})[0] != undefined){
+    if (urlRTTs.filter((urlRTT) => {return Number(urlRTT.RTT.replace("ms", "")) == RTTS[0]})[0] != undefined && RTTS.length == availableMirrors.length){
       const fastestMirrorURL = urlRTTs.filter((urlRTT) => {return Number(urlRTT.RTT.replace("ms", "")) == RTTS[0]})[0].url
       const fastestMirrorIDTemp = availableMirrors.filter((availableMirror) => {return availableMirror.url == fastestMirrorURL})[0].id
       setFastestMirrorID(fastestMirrorIDTemp)
