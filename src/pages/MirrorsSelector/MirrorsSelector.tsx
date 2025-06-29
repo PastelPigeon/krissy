@@ -1,44 +1,60 @@
 import { useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
-import { useInstallationInfo, InstallationInfoKey } from "../../hooks/useInstallationInfo";
-import { useNextButton } from "../../hooks/useNextButton";
-import { usePage } from "../../hooks/usePage";
 import usePing from "../../hooks/usePing";
+import { usePage } from "../../hooks/usePage";
+import { useNextButton } from "../../hooks/useNextButton";
+import { InstallationInfoKey, useInstallationInfo } from "../../hooks/useInstallationInfo";
 
 export default function MirrorsSelector(){
-  const availableMirrors = ["github.com", "gh.llkk.cc", "github.dpik.top"]
-
-  const [mirror, setMirror] = useState("github.com")
-
+  const [mirrorID, setMirrorID] = useState(0)
+  const { getRTT, urlRTTs } = usePing()
   const { navToPage } = usePage()
   const { updateNextFunc } = useNextButton()
   const { updateInstallationInfo } = useInstallationInfo()
-  const { getRTT, urlRTTs } = usePing()
+
+  const availableMirrors = [
+    {
+      id: 0,
+      name: "Github（国外源）",
+      url: import.meta.env.VITE_MIRROR_URL
+    },
+    {
+      id: 1,
+      name: "国内源（由Jank000.h提供）",
+      url: import.meta.env.VITE_MIRROR_URL_CHINA
+    }
+  ]
 
   useEffect(() => {
-    updateNextFunc(() => {
-      updateInstallationInfo(InstallationInfoKey.mirror, mirror)
-      navToPage(11)
+    availableMirrors.map((availableMirror) => {
+      getRTT(availableMirror.url)
     })
 
-    availableMirrors.forEach((availableMirror) => {
-      getRTT(availableMirror)
+    updateNextFunc(() => {
+      updateInstallationInfo(InstallationInfoKey.mirrorID, mirrorID)
+      navToPage(5)
     })
-  }, [mirror])
+  }, [mirrorID])
 
   return(
     <div className="mirrors-selector">
-      <PageHeader title="选择一个包镜像" description="您可以在下面的列表中选择一个包的镜像。为什么选择镜像？krissy官方下载源来源于github，国内可能无法正常访问，您可以通过选择镜像源替代官方源来加速下载，但请注意，镜像源有时并不稳定，且下载内容有被篡改的风险，可能危害您的电脑，请谨慎使用"/>
+      <PageHeader title="选择镜像源" description="您可以通过以下两个源下载翻译包文件，通常情况下，Github(国外源)拥有更快的更新速度，但在国内网络环境下下载速度并不理想，国内源拥有更快的下载速度，但需要从Github源同步，因此更新速度可能略慢于Github源，请根据您所在地的网络环境选择镜像源，或者通过下面的延迟选择(通常情况下，越小的延迟意味着更快的下载速度)"/>
 
       <div className="mirrors">
-        {availableMirrors.map((availableMirror) => {
-          return(
-            <div className="mirror" onClick={() => {setMirror(availableMirror)}} data-selected={mirror == availableMirror}>
-              <label className="url">{availableMirror}</label>
-              <label className="RTT">RTT(延迟) {urlRTTs.filter((urlRTT) => urlRTT.url == availableMirror)[0] != undefined ? urlRTTs.filter((urlRTT) => urlRTT.url == availableMirror)[0].RTT : "正在测算"}</label>
-            </div>
-          )
-        })}
+        {
+          availableMirrors.map((availableMirror) => {
+            return(
+              <div className="mirror" data-selected={availableMirror.id == mirrorID} onClick={() => {
+                if (availableMirror.id != mirrorID){
+                  setMirrorID(availableMirror.id)
+                }
+              }}>
+                <label className="name">{availableMirror.name}</label>
+                <label className="RTT">{urlRTTs.filter((urlRTT) => urlRTT.url == availableMirror.url)[0].RTT}</label>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   )

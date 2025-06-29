@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react"
+import { useInstallationInfo } from "./useInstallationInfo"
 
 type OnlinePacksInfoType = {
   readme: string,
@@ -25,10 +26,12 @@ function OnlinePacksInfoProvider(props: {children: ReactNode}){
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [hasError, setHasError] = useState<boolean>(false)
 
+  const { installationInfo } = useInstallationInfo()
+
   const requestOnlinePacksInfo = async () => {
     setIsLoading(true)
 
-    const response = await fetch(import.meta.env.VITE_ONLINE_PACKS_INFO_SOURCE)
+    const response = await fetch(installationInfo.mirrorID == 0 ? import.meta.env.VITE_ONLINE_PACKS_INFO_SOURCE : import.meta.env.VITE_ONLINE_PACKS_INFO_SOURCE_CHINA)
 
     if (response.ok){
       setOnlinePacksInfo(await response.json())

@@ -342,15 +342,15 @@ body{
   gap: 5px;
 }
 
-.mirrors-selector .mirrors .mirror:hover .url{
+.mirrors-selector .mirrors .mirror:hover .name{
   color: yellow;
 }
 
-.mirrors-selector .mirrors .mirror[data-selected=true] .url{
+.mirrors-selector .mirrors .mirror[data-selected=true] .name{
   color: yellow;
 }
 
-.mirrors-selector .mirrors .mirror .url{
+.mirrors-selector .mirrors .mirror .name{
   font: 14px "8bitOperatorPlus", "fzb";
   color: white;
   transition: all 0.5s;

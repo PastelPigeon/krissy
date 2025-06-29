@@ -38,9 +38,8 @@ function useInstall(){
 
     installationInfo.selectedPacks.forEach((selectedPackId) => {
       const targetPack = onlinePacksInfo?.availablePacks.filter((onlinePackInfo) => onlinePackInfo.chapterID == selectedPackId)[0]
-      const finalDownloadURL = installationInfo.mirror != "github.com" ? `https://${installationInfo.mirror}/${targetPack!.downloadURL}` : targetPack!.downloadURL
-      selectedPackUrls.push(finalDownloadURL)
-      updateLogs(`包名: ${targetPack!.packName} 下载url: ${finalDownloadURL}`)
+      selectedPackUrls.push(targetPack!.downloadURL)
+      updateLogs(`包名: ${targetPack!.packName} 下载url: ${targetPack!.downloadURL}`)
     })
 
     updateLogs("已获取全部包的url")

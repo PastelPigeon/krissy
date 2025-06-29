@@ -9,7 +9,7 @@ export default function NewInstallation(){
 
   useEffect(() => {
     updateNextFunc(() => {
-      navToPage(5)
+      navToPage(10)
     })
   }, [])
 
