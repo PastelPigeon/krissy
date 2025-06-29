@@ -20,6 +20,14 @@
       ]
     },
     {
+      "identifier": "fs:read-dirs",
+      "allow": [
+        {
+          "path": "**"
+        }
+      ]
+    },
+    {
       "identifier": "fs:allow-read-text-file",
       "allow": [
         {
@@ -80,7 +88,14 @@
       "allow": [
         {
           "name": "run-command",
-          "cmd": "powershell"
+          "cmd": "powershell",
+          "args": true
+        },
+        {
+          "name": "externals/7zip/7z",
+          "cmd": "",
+          "args": true,
+          "sidecar": true
         }
       ]
     },

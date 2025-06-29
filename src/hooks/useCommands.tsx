@@ -37,7 +37,7 @@ export function useCommands(): UseCommands {
       const commandStr = commandsToRun[i];
       try {
         // 创建命令实例
-        const cmd = Command.create("run-command", commandStr.split(" "));
+        const cmd = Command.create("run-command", commandStr.split(" "), { encoding: "utf8" });
         newProcesses.push(cmd);
         
         // 更新状态为运行中

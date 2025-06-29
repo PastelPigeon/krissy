@@ -71,7 +71,7 @@ function useInstall(){
 
     zips.forEach((zip) => {
       unzippedZipPaths.push(zip.tempDir ?? "")
-      updateLogs(`本地临时路径 ${zip.tempDir ?? "解压出现错误"}`)
+      updateLogs(`本地临时路径 ${zip.tempDir}`)
     })
 
     updateLogs("正在创建安装命令")
