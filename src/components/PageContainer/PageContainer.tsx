@@ -12,6 +12,7 @@ import PacksSelector from "../../pages/PacksSelector/PacksSelector"
 import EnableBackup from "../../pages/EnableBackup/EnableBackup"
 import InstallingProgress from "../../pages/InstallingProgress/InstallingProgress"
 import MirrorsSelector from "../../pages/MirrorsSelector/MirrorsSelector"
+import InstallingCompleted from "../../pages/InstallingCompleted/InstallingCompleted"
 
 const pages: ReactNode[] = [
   <Welcome/>,
@@ -25,7 +26,8 @@ const pages: ReactNode[] = [
   <PacksSelector/>,
   <EnableBackup/>,
   <MirrorsSelector/>,
-  <InstallingProgress/>
+  <InstallingProgress/>,
+  <InstallingCompleted/>
 ]
 
 export default function PageContainer(){

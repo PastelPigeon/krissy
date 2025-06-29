@@ -2,10 +2,12 @@ import { useEffect, useRef } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNextButton } from "../../hooks/useNextButton";
 import { useInstall } from "../../hooks/useInstall";
+import { usePage } from "../../hooks/usePage";
 
 export default function InstallingProgress(){
   const { updateNextFunc } = useNextButton()
-  const { install, logs } = useInstall()
+  const { navToPage } = usePage()
+  const { install, logs, progress } = useInstall()
   const hasExtcutedRef = useRef(false)
 
   useEffect(() => {
@@ -16,6 +18,12 @@ export default function InstallingProgress(){
 
     updateNextFunc(null)
   }, [])
+
+  useEffect(() => {
+    if (progress == 14){
+      navToPage(12)
+    }
+  }, [progress])
 
   return(
     <div className="installing-progress">
