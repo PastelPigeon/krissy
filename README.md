@@ -1,4 +1,4 @@
-![krissy](https://socialify.git.ci/PastelPigeon/krissy/image?custom_language=TypeScript&description=1&font=Inter&language=1&name=1&owner=1&pattern=Plus&stargazers=1&theme=Auto)  
+![krissy](https://socialify.git.ci/PastelPigeon/krissy/image?custom_language=TypeScript&description=1&font=Inter&language=1&name=1&owner=1&pattern=Plus&stargazers=1&theme=Auto)
 
 ![基于MIT开源](https://img.shields.io/badge/License-MIT-brightgreen.svg)
 ![1.0](https://img.shields.io/badge/版本-v1.0-brightgreen.svg)
