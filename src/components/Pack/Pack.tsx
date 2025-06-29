@@ -1,6 +1,7 @@
 const chineseChapterNames = {
   "0": "DR主程序（选择章节）",
-  "3": "第三章"
+  "3": "第三章",
+  "4": "第四章"
 }
 
 export default function Pack(props: {chapterID: number, packName: string, version: number, background: string}){
