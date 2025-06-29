@@ -361,6 +361,11 @@ body{
   color: white;
 }
 
+.mirrors-selector .mirrors .mirror .RTT[data-fastest=true]{
+  font: 12px "8bitOperatorPlus", "fzb";
+  color: green;
+}
+
 .installing-progress{
   position: relative;
   width: 100%;

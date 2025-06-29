@@ -14,7 +14,7 @@ export default function EnableBackup(){
   useEffect(() => {
     updateNextFunc(() => {
       updateInstallationInfo(InstallationInfoKey.backupEnabled, backupEnabled)
-      navToPage(10)
+      navToPage(11)
     })
   }, [backupEnabled])
 
