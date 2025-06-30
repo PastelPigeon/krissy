@@ -10,7 +10,7 @@ export default function ManagerOptions(){
 
   const { updateNextFunc } = useNextButton()
   const { navToPage } = usePage()
-  const { updateInstallationInfo, installationInfo  } = useInstallationInfo()
+  const { updateInstallationInfo} = useInstallationInfo()
   const { localGameInfo } = useLocalGameInfo()
 
   const optionsInfo = [
