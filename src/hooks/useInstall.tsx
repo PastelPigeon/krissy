@@ -6,16 +6,93 @@ import useUnzip from "./useUnzip";
 import { useCommands } from "./useCommands";
 import { join } from "@tauri-apps/api/path";
 import { useNewLocalGameInstallationInfo } from "./useNewLocalGameInstallationInfo";
+import { copyFile, mkdir, readDir, remove, stat } from "@tauri-apps/plugin-fs";
+import { useLocalGameInfo } from "./useLocalGameInfo";
+
+const backupsInfo = [
+  {
+    chapterID: 0,
+    info: [
+      {
+        patched: "/data.win",
+        backup: "/data.win.bak"
+      }
+    ]
+  },
+  {
+    chapterID: 3,
+    info: [
+      {
+        patched: "/chapter3_windows/data.win",
+        backup: "/chapter3_windows/data.win.bak"
+      },
+      {
+        patched: "/chapter3_windows/lang",
+        backup: "/chapter3_windows/lang.bak"
+      },
+      {
+        patched: "/chapter3_windows/vid",
+        backup: "/chapter3_windows/vid.bak"
+      }
+    ]
+  },
+  {
+    chapterID: 4,
+    info: [
+      {
+        patched: "/chapter4_windows/data.win",
+        backup: "/chapter4_windows/data.win.bak"
+      },
+      {
+        patched: "/chapter4_windows/lang",
+        backup: "/chapter4_windows/lang.bak"
+      }
+    ]
+  }
+]
+
+async function copyDir(from: string, to: string): Promise<void> {
+  // 确保源目录存在
+  const stats = await stat(from);
+  if (!stats.isDirectory) {
+    throw new Error(`${from} is not a directory`);
+  }
+
+  // 创建目标目录（递归创建，忽略已存在）
+  await mkdir(to, { recursive: true });
+
+  // 读取源目录内容
+  const entries = await readDir(from);
+
+  // 并行处理所有条目
+  await Promise.all(
+    entries.map(async (entry) => {
+      const srcPath = await join(from, entry.name);
+      const destPath = await join(to, entry.name);
+
+      if (entry.isDirectory) {
+        // 递归处理子目录
+        await copyDir(srcPath, destPath);
+      } else if (entry.isFile ) {
+        // 处理文件和符号链接
+        await copyFile(srcPath, destPath);
+      }
+      // 注意：忽略其他类型（如 FIFO、socket 等）
+    })
+  );
+}
 
 function useInstall(){
   const [progress, setProgress] = useState(0)
   const [logs, setLogs] = useState<string[]>([])
+
   const { installationInfo } = useInstallationInfo()
   const { onlinePacksInfo } = useOnlinePacksInfo()
   const { downloadTmpFiles, cleanDownloads } = useTmpDownload()
   const { unzip, cleanZips } = useUnzip()
   const { runCommands, killCommands } = useCommands()
   const { createNewInfo } = useNewLocalGameInstallationInfo()
+  const { localGameInfo } = useLocalGameInfo()
 
   const updateProgress = (delta: number) => {
     setProgress(prev => (prev + delta))
@@ -28,7 +105,7 @@ function useInstall(){
     ]))
   }
 
-  const install = async () => {
+  const newinstall = async (): Promise<number> => {
     updateLogs("正在开始安装")
     updateProgress(1)
 
@@ -107,6 +184,62 @@ function useInstall(){
 
     updateLogs("清理完成，安装结束")
     updateProgress(1)
+
+    return 0
+  }
+
+  const uninstall = async (): Promise<number> => {
+    updateLogs("正在开始卸载")
+
+    await Promise.all(
+      localGameInfo.info.installedPacks.map(async (installPack) => {
+        const backupInfo = backupsInfo.filter((backupInfo) => {return backupInfo.chapterID == installPack.chapterID})[0].info
+
+        await Promise.all(
+          backupInfo.map(async (backupInfoItem) => {
+            const absPatchedPath = await join(installationInfo.gamePath, backupInfoItem.patched)
+            const absBackupPath = await join(installationInfo.gamePath, backupInfoItem.backup)
+
+            if ((await stat(absPatchedPath)).isFile == true){
+              await copyFile(absBackupPath, absPatchedPath)
+              await remove(absBackupPath)
+            } else {
+              await copyDir(absBackupPath, absPatchedPath)
+              await remove(absBackupPath, {recursive: true})
+            }
+          })
+        )
+      })
+    )
+
+    const absInfoPath = await join(installationInfo.gamePath, ".krissy.json")
+    await remove(absInfoPath)
+
+    updateLogs("卸载完成！")
+    updateProgress(3)
+
+    return 0
+  }
+
+  const install = async () => {
+    switch (installationInfo.action){
+      case "install":
+        {
+          await newinstall()
+          break
+        }
+      case "reinstall":
+        {
+          await uninstall()
+          await newinstall()
+          break
+        }
+      case "uninstall":
+        {
+          await uninstall()
+          break
+        }
+    }
   }
 
   return { install, logs, progress }

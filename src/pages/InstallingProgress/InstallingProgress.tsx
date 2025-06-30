@@ -3,11 +3,14 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNextButton } from "../../hooks/useNextButton";
 import { useInstall } from "../../hooks/useInstall";
 import { usePage } from "../../hooks/usePage";
+import { useInstallationInfo } from "../../hooks/useInstallationInfo";
 
 export default function InstallingProgress(){
   const { updateNextFunc } = useNextButton()
   const { navToPage } = usePage()
   const { install, logs, progress } = useInstall()
+  const { installationInfo } = useInstallationInfo()
+
   const hasExtcutedRef = useRef(false)
 
   useEffect(() => {
@@ -20,8 +23,22 @@ export default function InstallingProgress(){
   }, [])
 
   useEffect(() => {
-    if (progress == 12){
-      navToPage(12)
+    switch (installationInfo.action){
+      case "install":
+        if (progress == 12){
+          navToPage(12)
+        }
+        break
+      case "reinstall":
+        if (progress == 15){
+          navToPage(12)
+        }
+        break
+      case "uninstall":
+        if (progress == 3){
+          navToPage(12)
+        }
+        break
     }
 
     console.log(progress)

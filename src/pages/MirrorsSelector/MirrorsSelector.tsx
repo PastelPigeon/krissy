@@ -17,7 +17,7 @@ export default function MirrorsSelector(){
   const availableMirrors = [
     {
       id: 0,
-      name: "Github（国外源）",
+      name: "Github（国外源，下载源通过镜像站加速）",
       url: import.meta.env.VITE_MIRROR_URL
     },
     {

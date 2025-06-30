@@ -10,7 +10,9 @@ export default function BottomBar(){
   const endPageIndexes: number[] = [
     4,
     7,
-    12
+    12,
+    13,
+    14
   ]
 
   return(
