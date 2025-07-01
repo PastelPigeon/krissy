@@ -16,7 +16,8 @@ function useNewLocalGameInstallationInfo(){
           chapterID: selectedPackInfo.chapterID,
           packName: selectedPackInfo.packName,
           version: selectedPackInfo.version,
-          background: selectedPackInfo.background
+          background: selectedPackInfo.background,
+          backupsInfo: selectedPackInfo.backupsInfo
         }
       )
     })

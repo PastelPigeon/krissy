@@ -8,7 +8,11 @@ type OnlinePacksInfoType = {
     packName: string,
     version: number,
     background: string,
-    downloadURL: string
+    downloadURL: string,
+    backupsInfo: {
+      patched: string,
+      backup: string
+    }[]
   }[]
 }
 

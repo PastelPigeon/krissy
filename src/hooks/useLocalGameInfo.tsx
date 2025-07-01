@@ -7,7 +7,11 @@ type KrissyInstallationInfoType = {
     chapterID: number,
     packName: string,
     version: number,
-    background: string
+    background: string,
+    backupsInfo: {
+      patched: string,
+      backup: string
+    }[]
   }[],
   hasBackup: boolean
 }

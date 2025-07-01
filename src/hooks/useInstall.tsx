@@ -9,48 +9,6 @@ import { useNewLocalGameInstallationInfo } from "./useNewLocalGameInstallationIn
 import { copyFile, mkdir, readDir, remove, stat } from "@tauri-apps/plugin-fs";
 import { useLocalGameInfo } from "./useLocalGameInfo";
 
-const backupsInfo = [
-  {
-    chapterID: 0,
-    info: [
-      {
-        patched: "/data.win",
-        backup: "/data.win.bak"
-      }
-    ]
-  },
-  {
-    chapterID: 3,
-    info: [
-      {
-        patched: "/chapter3_windows/data.win",
-        backup: "/chapter3_windows/data.win.bak"
-      },
-      {
-        patched: "/chapter3_windows/lang",
-        backup: "/chapter3_windows/lang.bak"
-      },
-      {
-        patched: "/chapter3_windows/vid",
-        backup: "/chapter3_windows/vid.bak"
-      }
-    ]
-  },
-  {
-    chapterID: 4,
-    info: [
-      {
-        patched: "/chapter4_windows/data.win",
-        backup: "/chapter4_windows/data.win.bak"
-      },
-      {
-        patched: "/chapter4_windows/lang",
-        backup: "/chapter4_windows/lang.bak"
-      }
-    ]
-  }
-]
-
 async function copyDir(from: string, to: string): Promise<void> {
   // 确保源目录存在
   const stats = await stat(from);
@@ -193,12 +151,10 @@ function useInstall(){
 
     await Promise.all(
       localGameInfo.info.installedPacks.map(async (installPack) => {
-        const backupInfo = backupsInfo.filter((backupInfo) => {return backupInfo.chapterID == installPack.chapterID})[0].info
-
         await Promise.all(
-          backupInfo.map(async (backupInfoItem) => {
-            const absPatchedPath = await join(installationInfo.gamePath, backupInfoItem.patched)
-            const absBackupPath = await join(installationInfo.gamePath, backupInfoItem.backup)
+          installPack.backupsInfo.map(async (backupsInfoItem) => {
+            const absPatchedPath = await join(installationInfo.gamePath, backupsInfoItem.patched)
+            const absBackupPath = await join(installationInfo.gamePath, backupsInfoItem.backup)
 
             if ((await stat(absPatchedPath)).isFile == true){
               await copyFile(absBackupPath, absPatchedPath)
