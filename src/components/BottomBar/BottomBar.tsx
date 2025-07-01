@@ -12,7 +12,8 @@ export default function BottomBar(){
     7,
     12,
     13,
-    14
+    14,
+    15
   ]
 
   return(

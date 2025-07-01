@@ -461,3 +461,9 @@ body{
 .installing-progress .dialog .dialog-content::-webkit-scrollbar{
   display: none;
 }
+
+.installing-completed .shenren-video{
+  position: absolute;
+  top: 0px;
+  left: -200px;
+}

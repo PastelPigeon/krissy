@@ -36,7 +36,7 @@ export default function InstallingProgress(){
         break
       case "uninstall":
         if (progress == 3){
-          navToPage(12)
+          navToPage(15)
         }
         break
     }

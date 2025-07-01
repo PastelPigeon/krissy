@@ -15,6 +15,7 @@ import MirrorsSelector from "../../pages/MirrorsSelector/MirrorsSelector"
 import InstallingCompleted from "../../pages/InstallingCompleted/InstallingCompleted"
 import ReinstallWithoutBackupError from "../../pages/ReinstallWithoutBackupError/ReinstallWithoutBackupError"
 import UninstallWithoutBackupError from "../../pages/UninstallWithoutBackupError/UninstallWithoutBackupError"
+import UninstallingCompleted from "../../pages/UninstallingCompleted/UninstallingCompleted"
 
 const pages: ReactNode[] = [
   <Welcome/>,
@@ -31,7 +32,8 @@ const pages: ReactNode[] = [
   <InstallingProgress/>,
   <InstallingCompleted/>,
   <ReinstallWithoutBackupError/>,
-  <UninstallWithoutBackupError/>
+  <UninstallWithoutBackupError/>,
+  <UninstallingCompleted/>
 ]
 
 export default function PageContainer(){

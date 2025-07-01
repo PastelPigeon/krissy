@@ -15,6 +15,7 @@ const sideImages: string[] = [
   "/side-images/page-normal.gif",
   "/side-images/page-normal.gif",
   "/side-images/page-normal.gif",
+  "/side-images/page-normal.gif",
   "/side-images/page-normal.gif"
 ]
 
