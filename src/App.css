@@ -99,6 +99,7 @@ body{
   display: flex;
   align-items: center;
   padding: 0px 10px;
+  background: #c3c3c3;
 }
 
 .bottom-bar .left{
@@ -472,14 +473,27 @@ body{
 .installing-progress .tenna-hint{
   position: absolute;
   display: flex;
-  bottom: -50px;
+  bottom: -40px;
   right: 0px;
   flex-direction: row;
   gap: 80px;
 }
 
-.installing-progress .tenna-hint .dancing-tenna{
+.installing-progress .tenna-hint .tenna-container{
+  position: relative;
+}
+
+.installing-progress .tenna-hint .tenna-container .mystery{
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  font: 50px "8bitOperatorPlus", "fzb";
+  color: yellow;
+}
+
+.installing-progress .tenna-hint .tenna-container .dancing-tenna{
   transform: scale(2);
+  filter: brightness(0) drop-shadow(0px 0px 4px yellow);
 }
 
 .installing-progress .tenna-hint .hint{

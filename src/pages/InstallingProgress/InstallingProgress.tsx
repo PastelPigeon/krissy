@@ -19,7 +19,7 @@ export default function InstallingProgress(){
   const { install, logs, progress } = useInstall()
   const { installationInfo } = useInstallationInfo()
 
-  const [currentTeenaWordIndex, setCurrentTennaWordIndex] = useState(0)
+  const [currentTennaWordIndex, setCurrentTennaWordIndex] = useState(0)
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const hasExtcutedRef = useRef(false)
@@ -93,10 +93,13 @@ export default function InstallingProgress(){
       <div className="tenna-hint">
         <div className="hint">
           <img className="background" src={new URL("/tenna_dialog.png", import.meta.url).href}/>
-          <label className="text">{tennaWords[currentTeenaWordIndex]}</label>
+          <label className="text">{tennaWords[currentTennaWordIndex]}</label>
         </div>
         {/* 孩子们，我不是神人 */}
-        <img src={new URL("/tenna_point_at_screen.png", import.meta.url).href} className="dancing-tenna"/>
+        <div className="tenna-container">
+          <img src={new URL("/tenna_point_at_screen.png", import.meta.url).href} className="dancing-tenna"/>
+          <label className="mystery">?</label>
+        </div>
       </div>
     </div>
   )
