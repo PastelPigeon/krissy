@@ -113,7 +113,7 @@ function useInstall(){
     let commands: string[] = []
 
     unzippedZipPaths.forEach(async (unzippedZipPath) => {
-      const command = `powershell ${await join(unzippedZipPath, "install.ps1")} -GamePath ${installationInfo.gamePath} ${installationInfo.backupEnabled == true && "-CreateBackup"}`
+      const command = `powershell -ExecutionPolicy Bypass -File ${await join(unzippedZipPath, "install.ps1")} -GamePath ${installationInfo.gamePath} ${installationInfo.backupEnabled == true && "-CreateBackup"}`
       commands.push(command)
       updateLogs(`命令 ${command}`)
     })
