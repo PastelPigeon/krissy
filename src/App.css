@@ -87,6 +87,7 @@ body{
   overflow: hidden;
   width: calc(100% - 12px);
   height: calc(100% - 45px);
+  overflow: hidden;
 }
 
 .bottom-bar{
@@ -467,3 +468,38 @@ body{
   top: 0px;
   left: -200px;
 }
+
+.installing-progress .tenna-hint{
+  position: absolute;
+  display: flex;
+  bottom: -50px;
+  right: 0px;
+  flex-direction: row;
+  gap: 80px;
+}
+
+.installing-progress .tenna-hint .dancing-tenna{
+  transform: scale(2);
+}
+
+.installing-progress .tenna-hint .hint{
+  position: relative;
+  width: 300px;
+}
+
+.installing-progress .tenna-hint .hint .background{
+  position: absolute;
+  left: -100px;
+}
+
+.installing-progress .tenna-hint .hint .text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  transform: translate(-50%, -65%);
+  font: 15px "8bitOperatorPlus", "fzb";
+  color: #000000;
+}
+
+
