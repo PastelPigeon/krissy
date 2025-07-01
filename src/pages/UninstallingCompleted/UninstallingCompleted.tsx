@@ -1,7 +1,6 @@
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useEffect } from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
-import { useLocalGameInfo } from "../../hooks/useLocalGameInfo";
 import { useNextButton } from "../../hooks/useNextButton";
 
 const appWindow = getCurrentWindow();
